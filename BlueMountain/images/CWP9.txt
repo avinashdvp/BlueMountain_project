@@ -1,0 +1,61 @@
+activity_main.xml
+--------------------
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EBEAC0"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn"
+        android:text="Normal Switching"
+        android:textStyle="bold"
+        android:textColor="#f00"
+        android:textSize="25dp"
+        android:background="#fff"
+        android:padding="10dp"/>
+
+</LinearLayout>
+
+MainActivity.java
+--------------------
+public class MainActivity extends AppCompatActivity {
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button bt=findViewById(R.id.btn);
+
+        bt.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),Giri.class);
+                startActivity(i);
+            }
+        });
+
+    }
+}
+
+second.xml
+========
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f00"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+SecondActivity.java
+-----------------------
+public class Giri extends AppCompatActivity {
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_giri);
+    }
+}

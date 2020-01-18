@@ -1,0 +1,60 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8EAB4"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/a"
+        android:id="@+id/image1"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/d"
+        android:id="@+id/image2"/>
+
+</LinearLayout>
+
+package com.nirmaan.cwp6;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView iv;
+    ImageButton ib;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        iv=findViewById(R.id.image1);
+        ib=findViewById(R.id.image2);
+
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv.setImageResource(R.drawable.b);
+            }
+        });
+
+        ib.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v)
+            {
+                Toast.makeText(getApplicationContext(),"you clicked image button! you clicked image button! you clicked image button! you clicked image button!you clicked image button!you clicked image button! you clicked image button! you clicked image button! you clicked image button! you clicked image button!v v you clicked image button!you clicked image button! you clicked image button! ",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+}

@@ -1,0 +1,67 @@
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#C8F1AB"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:text="*****"
+        android:textSize="30dp"
+        android:textColor="#005EFF"
+        android:padding="10dp"
+        android:fontFamily="serif-monospace"
+        android:background="#FAF7F7"
+        android:textStyle="bold"/>
+
+</LinearLayout>
+
+package com.nirmaan.cwp8;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements LocationListener{
+
+    TextView tv;
+
+    @SuppressLint("MissingPermission")
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tv=findViewById(R.id.text);
+        LocationManager lm= (LocationManager) getSystemService(LOCATION_SERVICE);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0, (LocationListener) this);
+    }
+
+    public void onLocationChanged(Location location) {
+        double latitude=location.getLatitude();
+        double longitude=location.getLongitude();
+        tv.setText("Latitude:"+latitude+"\n"+"Longitude:"+longitude);
+    }
+
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(this, "Gps is on", Toast.LENGTH_LONG).show();
+    }
+
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(this, "Gps is off", Toast.LENGTH_LONG).show();
+    }
+}

@@ -1,0 +1,45 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/a"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+
+package com.nirmaan.cwp7;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    MediaPlayer mp;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mp=MediaPlayer.create(this,R.raw.abc);
+        Toast.makeText(this, "on create", Toast.LENGTH_SHORT).show();
+    }
+
+    protected void onStart() {
+        super.onStart();
+        mp.start();
+        Toast.makeText(this, "on start", Toast.LENGTH_SHORT).show();
+    }
+
+    protected void onPause() {
+        super.onPause();
+        mp.pause();
+        Toast.makeText(this, "on pause", Toast.LENGTH_SHORT).show();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        mp.stop();
+        Toast.makeText(this, "on destroy", Toast.LENGTH_SHORT).show();
+    }
+}
